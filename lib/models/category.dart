@@ -5,7 +5,7 @@ class Category {
   Category({
     required this.id,
     required this.title,
-    this.color = Colors.orange,
+    this.color = Colors.white,
   });
   final String id;
   final String title;
