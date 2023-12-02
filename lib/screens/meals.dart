@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:meal_app/models/meal.dart';
+import 'package:meal_app/widgets/meal_item.dart';
 
 class MealsScreen extends StatelessWidget {
   const MealsScreen({ required this.title, required this.meals, super.key});
@@ -13,7 +14,7 @@ class MealsScreen extends StatelessWidget {
     // this is the content of the screen, which is the list view
    Widget content =  ListView.builder(
         itemCount: meals.length, itemBuilder:
-       (context, index) => Text( meals[index].title),);
+       (context, index) =>  MealItem(meal: meals[index]));
      //if the list is empty, it will display a message here
     if (meals.isEmpty) {
       content = Center( child: Column(mainAxisSize: MainAxisSize.min,
