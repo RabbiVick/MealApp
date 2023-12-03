@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:meal_app/models/meal.dart';
+import 'package:meal_app/screens/meal_details.dart';
 import 'package:meal_app/widgets/meal_item.dart';
+ 
 
 class MealsScreen extends StatelessWidget {
   const MealsScreen({ required this.title, required this.meals, super.key});
@@ -8,13 +10,21 @@ class MealsScreen extends StatelessWidget {
   final String title;
   final List<Meal> meals;
 
+  void selectMeal( BuildContext context, Meal meal) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (ctx) => 
+    MealDetailsScreen(meal: meal)));
+  }
+
   @override
   Widget build(BuildContext context) {
+
     //i created this function for the content of the screen
     // this is the content of the screen, which is the list view
    Widget content =  ListView.builder(
         itemCount: meals.length, itemBuilder:
-       (context, index) =>  MealItem(meal: meals[index]));
+       (context, index) =>  MealItem(meal: meals[index], onSelectMeal:( meal){
+         selectMeal(context, meal);
+       } ,));
      //if the list is empty, it will display a message here
     if (meals.isEmpty) {
       content = Center( child: Column(mainAxisSize: MainAxisSize.min,
