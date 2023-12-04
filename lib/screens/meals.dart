@@ -5,9 +5,9 @@ import 'package:meal_app/widgets/meal_item.dart';
  
 
 class MealsScreen extends StatelessWidget {
-  const MealsScreen({ required this.title, required this.meals, super.key});
+  const MealsScreen({this.title, required this.meals, super.key});
 
-  final String title;
+  final String?title;
   final List<Meal> meals;
 
   void selectMeal( BuildContext context, Meal meal) {
@@ -37,10 +37,14 @@ class MealsScreen extends StatelessWidget {
         ],
       ));
     }
-
+    //!if the title is null, it will return the content of the screen without the title
+   if (title == null) {
+     return content;
+   }
     return Scaffold(
       appBar: AppBar(
-        title: Text(title),
+        //!if the title is not null, it will return the title of the screen
+        title: Text(title!),
       ),
       body:content,
     );
