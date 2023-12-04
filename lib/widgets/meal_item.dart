@@ -13,7 +13,6 @@ class MealItem extends StatelessWidget {
    //?i created this function to get the complexity text from the enum Complexity and capitalize the first letter of the string and return it as a string
    //? i used the substring function to get the rest of the string after the first letter and return it as a string with the first letter capitalized and the rest of the string 
   }
-
    String get affordabilityText {
    return meal.affordability.name[0].toUpperCase() + meal.affordability.name.substring(1);
    
